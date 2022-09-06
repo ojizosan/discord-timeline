@@ -11,16 +11,11 @@ import (
 	"github.com/bwmarrin/discordgo"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
-	"github.com/joho/godotenv"
 )
 
 var db *sqlx.DB
 
 func init() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Println("info: no .env file")
-	}
 
 	// MYSQLへの接続
 	mysqlUser := os.Getenv("MYSQL_USER")
@@ -32,6 +27,7 @@ func init() {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", mysqlUser, mysqlPass, mysqlAddr, mysqlPort, mysqlDBName)
 	log.Println("info: DSN ->", dsn)
 	for {
+		var err error
 		db, err = sqlx.Connect("mysql", dsn)
 		if err != nil {
 			log.Println("SQL Connect Error\n", err)
