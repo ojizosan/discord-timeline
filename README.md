@@ -1,12 +1,15 @@
 # discord-timeline
 
-# .envの例
+## .envの例
+
 Discord のトークンが必須です。
 
-https://discord.com/developers/applications/ からBotのトークンを取得してください。
+<https://discord.com/developers/applications/> からBotのトークンを取得してください。
+
 ## 使用方法
+
 1. .envを設定する
-   
+
     ```.env
     DISCORD_TOKEN=<Discord Bot Token>
     MYSQL_ROOT_PASSWORD=rootpassword
@@ -18,13 +21,13 @@ https://discord.com/developers/applications/ からBotのトークンを取得�
     ```
 
 1. コンテナを build する
-    
+
     ```bash
-    $ docker build -t shoumoji/discord-timeline:1.0.0 .
+    docker build -t shoumoji/discord-timeline:1.0.0 .
     ```
 
 1. docker-compose で MYSQL と一緒に起動
 
     ```bash
-    $ docker-compose up -d
+    docker-compose up -d
     ```
